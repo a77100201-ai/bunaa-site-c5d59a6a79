@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
-  <title>لوحة تحكم المبيعات</title>
+  <title>لوحة مبيعاتي الذكية</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,9 +12,9 @@
 </head>
 <body>
   <aside class="sidebar" id="sidebar">
-    <a class="brand" href="#overview" aria-label="لوحة تحكم المبيعات">
+    <a class="brand" href="#overview" aria-label="لوحة مبيعاتي الذكية">
       <span class="brand-mark">م</span>
-      <span><strong>مبيعاتي</strong><small>لوحة التحكم</small></span>
+      <span><strong>مبيعاتي الذكية</strong><small>لوحة التحكم</small></span>
     </a>
     <div class="nav-label">القائمة الرئيسية</div>
     <nav class="main-nav" aria-label="التنقل الرئيسي">
@@ -39,7 +39,7 @@
   <main class="main-content">
     <header class="topbar">
       <button class="mobile-menu" id="menuToggle" aria-label="فتح القائمة">☰</button>
-      <div class="breadcrumb">الرئيسية <span>/</span> <strong id="crumbTitle">نظرة عامة</strong></div>
+      <div class="breadcrumb">الرئيسية <span>/</span> <strong id="crumbTitle">لوحة مبيعاتي الذكية</strong></div>
       <div class="topbar-actions">
         <span class="today" id="todayDate"></span>
         <button class="icon-button" id="refreshButton" aria-label="تحديث البيانات" title="تحديث البيانات">↻</button>
@@ -47,9 +47,14 @@
       </div>
     </header>
 
+    <div class="announcement-bar" role="alert">
+      <span class="announcement-badge">تنبيه</span>
+      <span>عروض نهاية الأسبوع 🎉</span>
+    </div>
+
     <section class="page-section active" id="overview">
       <div class="page-heading">
-        <div><span class="eyebrow">ملخص متجرك</span><h1>نظرة عامة</h1><p>إليك ما يحدث في متجرك اليوم.</p></div>
+        <div><span class="eyebrow">ملخص متجرك</span><h1>لوحة مبيعاتي الذكية</h1><p>إليك ما يحدث في متجرك اليوم.</p></div>
         <a class="button button-primary" href="#orders"><span>＋</span> استعرض الطلبات</a>
       </div>
 
@@ -152,7 +157,7 @@
       </section>
     </section>
 
-    <footer class="page-footer">لوحة مبيعاتي <span>•</span> نظرة أوضح، قرارات أفضل.</footer>
+    <footer class="page-footer">لوحة مبيعاتي الذكية <span>•</span> نظرة أوضح، قرارات أفضل.</footer>
   </main>
 
   <div class="modal-backdrop hidden" id="customerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

@@ -103,7 +103,7 @@
     const valid = ["overview","orders","customers"].includes(section) ? section : "overview";
     document.querySelectorAll(".page-section").forEach(el=>el.classList.toggle("active",el.id===valid));
     document.querySelectorAll(".nav-link").forEach(el=>el.classList.toggle("active",el.dataset.section===valid));
-    $("crumbTitle").textContent = ({overview:"نظرة عامة",orders:"الطلبات",customers:"العملاء"})[valid];
+    $("crumbTitle").textContent = ({overview:"لوحة مبيعاتي الذكية",orders:"الطلبات",customers:"العملاء"})[valid];
     $("sidebar").classList.remove("open");
     window.scrollTo(0,0);
   }
