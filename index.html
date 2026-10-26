@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>لوحة تحكم المبيعات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#overview" aria-label="لوحة تحكم المبيعات">
+      <span class="brand-mark">م</span>
+      <span><strong>مبيعاتي</strong><small>لوحة التحكم</small></span>
+    </a>
+    <div class="nav-label">القائمة الرئيسية</div>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <a href="#overview" class="nav-link active" data-section="overview"><span class="nav-icon">▦</span> نظرة عامة</a>
+      <a href="#orders" class="nav-link" data-section="orders"><span class="nav-icon">▤</span> الطلبات <span class="nav-count" id="orderNavCount">0</span></a>
+      <a href="#customers" class="nav-link" data-section="customers"><span class="nav-icon">♧</span> العملاء</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card">
+        <span class="help-symbol">✦</span>
+        <strong>مرحبًا بك!</strong>
+        <p>تابع أداء متجرك ونمِّ مبيعاتك من مكان واحد.</p>
+      </div>
+      <div class="profile">
+        <div class="avatar">م</div>
+        <div><strong>مدير المتجر</strong><small>المسؤول</small></div>
+        <span class="profile-dots">•••</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuToggle" aria-label="فتح القائمة">☰</button>
+      <div class="breadcrumb">الرئيسية <span>/</span> <strong id="crumbTitle">نظرة عامة</strong></div>
+      <div class="topbar-actions">
+        <span class="today" id="todayDate"></span>
+        <button class="icon-button" id="refreshButton" aria-label="تحديث البيانات" title="تحديث البيانات">↻</button>
+        <div class="top-avatar">م</div>
+      </div>
+    </header>
+
+    <section class="page-section active" id="overview">
+      <div class="page-heading">
+        <div><span class="eyebrow">ملخص متجرك</span><h1>نظرة عامة</h1><p>إليك ما يحدث في متجرك اليوم.</p></div>
+        <a class="button button-primary" href="#orders"><span>＋</span> استعرض الطلبات</a>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-top"><span>إجمالي المبيعات</span><span class="stat-icon purple">ر.س</span></div>
+          <div class="stat-value" id="salesStat">—</div>
+          <div class="stat-foot"><span class="trend positive">↗ 12.8%</span><span>مقارنة بالشهر الماضي</span></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>الطلبات</span><span class="stat-icon blue">▤</span></div>
+          <div class="stat-value" id="ordersStat">—</div>
+          <div class="stat-foot"><span class="trend positive">↗ 8.2%</span><span>مقارنة بالشهر الماضي</span></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>العملاء</span><span class="stat-icon orange">♧</span></div>
+          <div class="stat-value" id="customersStat">—</div>
+          <div class="stat-foot"><span class="trend positive">↗ 5.4%</span><span>إجمالي العملاء المسجلين</span></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-top"><span>متوسط قيمة الطلب</span><span class="stat-icon green">◈</span></div>
+          <div class="stat-value" id="averageStat">—</div>
+          <div class="stat-foot"><span class="trend neutral">—</span><span>متوسط قيمة الطلبات</span></div>
+        </article>
+      </div>
+
+      <section class="panel chart-panel">
+        <div class="panel-heading">
+          <div><h2>تحليل المبيعات</h2><p>نظرة على مبيعات آخر 6 أشهر</p></div>
+          <span class="chart-legend"><i></i> المبيعات</span>
+        </div>
+        <div class="chart-wrap">
+          <div class="y-labels"><span>20 ألف</span><span>15 ألف</span><span>10 آلاف</span><span>5 آلاف</span><span>0</span></div>
+          <div class="chart-area">
+            <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+            <svg id="salesChart" viewBox="0 0 720 230" preserveAspectRatio="none" role="img" aria-label="رسم بياني للمبيعات الشهرية"></svg>
+            <div class="x-labels" id="chartLabels"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel recent-panel">
+        <div class="panel-heading">
+          <div><h2>أحدث الطلبات</h2><p>آخر الطلبات الواردة إلى متجرك</p></div>
+          <a class="text-link" href="#orders">عرض كل الطلبات <span>←</span></a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>رقم الطلب</th><th>العميل</th><th>التاريخ</th><th>الحالة</th><th>المبلغ</th></tr></thead>
+            <tbody id="recentOrders"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="page-section" id="orders">
+      <div class="page-heading">
+        <div><span class="eyebrow">متجرك</span><h1>الطلبات</h1><p>تابع الطلبات وحالاتها ومبالغها.</p></div>
+      </div>
+      <section class="panel data-panel">
+        <div class="toolbar">
+          <div><h2>كل الطلبات</h2><p id="ordersSummary">إدارة ومراجعة الطلبات</p></div>
+          <div class="toolbar-controls">
+            <label class="search-box"><span>⌕</span><input id="orderSearch" type="search" placeholder="ابحث برقم الطلب أو العميل" aria-label="ابحث في الطلبات"></label>
+            <select id="orderSort" aria-label="ترتيب الطلبات">
+              <option value="newest">الأحدث أولًا</option>
+              <option value="oldest">الأقدم أولًا</option>
+              <option value="highest">الأعلى قيمة</option>
+              <option value="lowest">الأقل قيمة</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>رقم الطلب</th><th>العميل</th><th>التاريخ</th><th>الحالة</th><th>المبلغ</th></tr></thead>
+            <tbody id="ordersTable"></tbody>
+          </table>
+        </div>
+        <div class="empty-state hidden" id="ordersEmpty">لا توجد طلبات تطابق بحثك.</div>
+      </section>
+    </section>
+
+    <section class="page-section" id="customers">
+      <div class="page-heading">
+        <div><span class="eyebrow">متجرك</span><h1>العملاء</h1><p>إدارة بيانات عملائك في مكان واحد.</p></div>
+        <button class="button button-primary" id="addCustomerButton"><span>＋</span> إضافة عميل</button>
+      </div>
+      <section class="panel data-panel">
+        <div class="toolbar">
+          <div><h2>قائمة العملاء</h2><p id="customersSummary">العملاء المسجلون في متجرك</p></div>
+          <label class="search-box"><span>⌕</span><input id="customerSearch" type="search" placeholder="ابحث بالاسم أو البريد" aria-label="ابحث في العملاء"></label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>العميل</th><th>البريد الإلكتروني</th><th>رقم الهاتف</th><th>الطلبات</th><th>إجراءات</th></tr></thead>
+            <tbody id="customersTable"></tbody>
+          </table>
+        </div>
+        <div class="empty-state hidden" id="customersEmpty">لا يوجد عملاء مطابقون لبحثك.</div>
+      </section>
+    </section>
+
+    <footer class="page-footer">لوحة مبيعاتي <span>•</span> نظرة أوضح، قرارات أفضل.</footer>
+  </main>
+
+  <div class="modal-backdrop hidden" id="customerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-heading"><div><span class="eyebrow">بيانات العميل</span><h2 id="modalTitle">إضافة عميل جديد</h2></div><button class="close-button" id="closeModal" aria-label="إغلاق">×</button></div>
+      <form id="customerForm">
+        <input type="hidden" id="customerId">
+        <label>اسم العميل<input id="customerName" name="name" required minlength="2" placeholder="مثال: سارة أحمد"></label>
+        <label>البريد الإلكتروني<input id="customerEmail" name="email" type="email" required placeholder="name@example.com"></label>
+        <label>رقم الهاتف<input id="customerPhone" name="phone" type="tel" required minlength="7" placeholder="+966 5X XXX XXXX"></label>
+        <div class="form-error" id="formError" role="alert"></div>
+        <div class="modal-actions"><button type="button" class="button button-secondary" id="cancelModal">إلغاء</button><button type="submit" class="button button-primary">حفظ العميل</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
